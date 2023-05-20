@@ -8,7 +8,7 @@ a = -9 b = -3 -> max = -3
 */
 
 
-/*Console.WriteLine("Task 1 : Max and min of two numbers.");
+Console.WriteLine("Task 1 : Max and min of two numbers.");
 Console.WriteLine("Enter numbers: ");
 Console.Write("Number 1 = ");
 double number1 = Convert.ToDouble(Console.ReadLine());
@@ -26,7 +26,7 @@ else
 {
     Console.WriteLine("Number " + number2 + " is max. Number " + number1 + " is min.");
 }
-*/
+
 
 /* Task 2
 Задача 4: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
@@ -35,7 +35,7 @@ else
 22 3 9 -> 22 
 */
 
-/*
+
 Console.WriteLine("Task 2 : Max of numbers.");
 Console.Write("Enter amount of numbers: ");
 int amountOfNumbers = Convert.ToInt32(Console.ReadLine());
@@ -55,7 +55,7 @@ for (int i = 0; i < amountOfNumbers; i++)
     }
 }
 Console.WriteLine("Max of your numbers is " + max);
-*/
+
 
 /* Task 3
 Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
@@ -64,7 +64,7 @@ Console.WriteLine("Max of your numbers is " + max);
 7 -> нет
 */
 
-/*
+
 Console.WriteLine("Task 3 : An even number.");
 Console.Write("Enter your number: ");
 double number3 = Convert.ToDouble(Console.ReadLine());
@@ -76,7 +76,7 @@ else
 {
     Console.WriteLine("Your number is uneven.");
 }
-*/
+
 /* Task 4
 Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
 5 -> 2, 4
