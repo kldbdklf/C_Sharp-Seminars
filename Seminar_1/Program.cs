@@ -64,6 +64,7 @@ Console.WriteLine("Max of your numbers is " + max);
 7 -> нет
 */
 
+/*
 Console.WriteLine("Task 3 : An even number.");
 Console.Write("Enter your number: ");
 double number3 = Convert.ToDouble(Console.ReadLine());
@@ -75,4 +76,28 @@ else
 {
     Console.WriteLine("Your number is uneven.");
 }
+*/
+/* Task 4
+Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+5 -> 2, 4
+8 -> 2, 4, 6, 8
+*/
 
+Console.WriteLine("Task 4 : The set of even numbers.");
+bool work = true;
+int number4 =0;
+while (work) {
+Console.Write("Enter an integer greater than zero: ");
+number4 = Convert.ToInt32(Console.ReadLine());
+if (number4 > 0 ) work = false;
+else if (number4 == 0) {
+ Console.WriteLine("Your number is equal zero. Repeat the input.");
+}
+else Console.WriteLine("Your number is less than zero. Repeat the input.");
+}
+Console.Write("The set of even numbers: ");
+for (int i = 1; i <= number4; i++) {
+    if (i%2 ==0) {
+        Console.Write(i + " ");
+    }
+}
