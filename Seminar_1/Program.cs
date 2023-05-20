@@ -35,6 +35,7 @@ else
 22 3 9 -> 22 
 */
 
+/*
 Console.WriteLine("Task 2 : Max of numbers.");
 Console.Write("Enter amount of numbers: ");
 int amountOfNumbers = Convert.ToInt32(Console.ReadLine());
@@ -54,7 +55,24 @@ for (int i = 0; i < amountOfNumbers; i++)
     }
 }
 Console.WriteLine("Max of your numbers is " + max);
+*/
 
+/* Task 3
+Задача 6: Напишите программу, которая на вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).
+4 -> да
+-3 -> нет
+7 -> нет
+*/
 
-
+Console.WriteLine("Task 3 : An even number.");
+Console.Write("Enter your number: ");
+double number3 = Convert.ToDouble(Console.ReadLine());
+if (number3 % 2 == 0)
+{
+    Console.WriteLine("Your number is even.");
+}
+else
+{
+    Console.WriteLine("Your number is uneven.");
+}
 
