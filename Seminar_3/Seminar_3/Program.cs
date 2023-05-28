@@ -65,20 +65,19 @@ Console.Write($"The distance between points = {Math.Round(d, 2)}");
 5 -> 1, 8, 27, 64, 125
 */
 
-
+Console.WriteLine("Task 3 The table of cubes of numbers: "); // Допустил, что при отрицательном числе кубы нужно представлять от -1 до N, а не от 1 до N
 void showTable (int number)
 {
     int numberSign = 1;
     if (number < 0) { numberSign = -1;
         number *= -1;
+        Console.Write(Math.Pow(1, 3) + "\t" + Math.Pow(0, 3) + "\t");
     }
     for (int i = 1; i <= number; i++)
     {
         Console.Write((Math.Pow(i, 3) * numberSign) + "\t");
 }
 }
-
-Console.WriteLine("Task 3 The table of cubes of numbers: ");
 Console.Write("Enter your integer: ");
 int inputNumber2 = int.Parse(Console.ReadLine());
 showTable(inputNumber2);
