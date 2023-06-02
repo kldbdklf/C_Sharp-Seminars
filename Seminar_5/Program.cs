@@ -3,9 +3,9 @@ Task 1:
 Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. Напишите программу, которая покажет количество чётных чисел в массиве.
 [345, 897, 568, 234] -> 2
 */
-/*
+Console.WriteLine();
 Console.WriteLine("Task 1. Even numbers of the array: ");
-
+Console.WriteLine();
 void FillArrayThreeDigits(int[] array)  // функция, заполняющая массив рандомными трехзначными числами
 {
     Random rand = new Random();
@@ -14,13 +14,13 @@ void FillArrayThreeDigits(int[] array)  // функция, заполняюща�
         array[i] = rand.Next(100, 1000);
     }
 }
-*/
+
 
 void ShowArray(int[] array) // функция, выводящая массив на консоль
 {
     Console.WriteLine($"Array : [{String.Join(" | ", array)}]");
 }
-/*
+
 void ShowEvenNumbersOfArray(int[] array) { // функция, подсчитываяющая количество четных чисел в массиве
     int counter = 0;
     for (int i = 0; i < array.Length; i++) { 
@@ -28,14 +28,13 @@ void ShowEvenNumbersOfArray(int[] array) { // функция, подсчитыв
     }
     Console.WriteLine($"Amount of even numbers = {counter}");
 }
-*/
 int size1 = 10;
-/*
+
 int[] array1 = new int[size1];
 FillArrayThreeDigits(array1);
 ShowArray(array1);
 ShowEvenNumbersOfArray(array1);
-*/
+
 
 /*
  Task 2:
@@ -43,8 +42,9 @@ ShowEvenNumbersOfArray(array1);
 [3, 7, 23, 12] -> 19
 [-4, -6, 89, 6] -> 0
 */
-/*
+Console.WriteLine();
 Console.WriteLine("Task 2. Sum of numbers on odd position: ");
+Console.WriteLine();
 void FillArray (int[] array) // функция, заполняющая массив случайными числами от -100 до 100
 {
     Random rand = new Random();
@@ -66,7 +66,7 @@ int[] array2 = new int[size1]; // использую переменную раз
 FillArray(array2);
 ShowArray(array2); // функция из первой задачи
 Console.WriteLine($"Sum of numbers on odd position = {SumOfNumbersOnOddPositions(array2)}");
-*/
+
 
 
 /*
@@ -74,7 +74,9 @@ Task 3:
 Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
  */
+Console.WriteLine();
 Console.WriteLine("Task 3. The diffrence between min and max: ");
+Console.WriteLine();
 void FillArrayDouble(double[] array) // функция, заполняющая массив случайными вещественными числами от -100 до 100
 {
     Random rand = new Random();
@@ -91,7 +93,7 @@ double FindDiffrenceBetweenMaxAndMin(double[] array) // функция, нахо
         if (min > array[i]) { min = array[i]; }
         if (max < array[i]) { max = array[i]; }
     }
-    result = max - min;
+    result = Math.Round(max - min,4);
     return result;
 }
 void ShowArrayDouble(double[] array) // попытался создать шаблон функции, но толи я плохо гуглил, толи в С# с этим проблемы. Выдавали только шаблоны классов, либо очень сложные конструкции
