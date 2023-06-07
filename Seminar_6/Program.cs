@@ -6,7 +6,7 @@
  */
 using System.Transactions;
 
-/*
+
 Console.WriteLine("Task 1 multiplication: ");
 void FillArray(int[] array) // функция, заполняющая массив случайными числами от -100 до 100
 {
@@ -43,14 +43,14 @@ FillArray(array1);
 ShowArray(array1);
 int[] array2 = CreateArrayAfterMultiplication(array1);
 ShowArray(array2);
-*/
+
 /*
  Task 2: 
 Задача 41: Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
 0, 7, 8, -2, -2 -> 2
 1, -7, 567, 89, 223-> 3
  */
-/*
+
 Console.WriteLine("Task 2 User's numbers more than zero: ");
 List<double> CreateArrayByUser () // функция по созданию списка (list) из чисел пользователя
 {
@@ -100,12 +100,12 @@ void ShowNumbersMoreThanZero (List<double> list) // функция для пок
     }
     else
     {
-        Console.Write($"Amount of numbers more than 0 : {CheckNumbersMoreThanZero(list)}");
+        Console.Write($"Amount of numbers more than 0 : {CheckNumbersMoreThanZero(list)} \n");
     }
 }
 List<double> list1 = CreateArrayByUser();
 ShowNumbersMoreThanZero(list1);
-*/
+
 /*
 Task 3:
 Задача 43: Напишите программу, которая найдёт точку пересечения двух прямых, заданных уравнениями y = k1 * x + b1, y = k2 * x + b2; значения b1, k1, b2 и k2 задаются пользователем.
@@ -127,7 +127,7 @@ if (k1 != k2) {
     y = k1 * x + b1;
     Console.WriteLine($"Cross point = ({x}; {y})");
 }
-else Console.WriteLine("Exception: Division by 0. K1 cann't be equal K2");
+else Console.WriteLine("Exception: Division by 0. K1 cann't be equal K2.");
 
 
 
