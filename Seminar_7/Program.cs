@@ -44,7 +44,7 @@ ShowDoubleArray(array1, rows, columns);
 8 4 2 4
 17 -> такого числа в массиве нет
 */
-/*
+
 void CheckElementOfArray(double[,] array, int numbersOfRows, int numbersOfColumns, int inputRow, int inputColumn)
 {
     if (inputRow < numbersOfRows && inputColumn < numbersOfColumns)
@@ -59,7 +59,7 @@ int inputRow = int.Parse(Console.ReadLine());
 Console.Write("Enter a column of your number: ");
 int inputColumn = int.Parse(Console.ReadLine());
 CheckElementOfArray(array1, rows, columns, inputRow, inputColumn);
-*/
+
 /*
 Task 3: 
 Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
@@ -98,12 +98,12 @@ void AverageOfNumbersOfArray (int[,] array, int numbersOfRows, int numbersOfColu
    double average = 0;
     for (int i = 0; i < numbersOfColumns; i++)
     {
-        average = 0;
         for (int j = 0; j < numbersOfRows; j++)
         {
             average += array[j, i];
         }
-        Console.WriteLine($"Average of {i} column = {Math.Round((average /= numbersOfRows), 2)}"); 
+        Console.WriteLine($"Average of {i} column = {Math.Round((average /= numbersOfRows), 2)}");
+        average = 0;
     }
 }
 int[,] array2 = new int[rows, columns];
