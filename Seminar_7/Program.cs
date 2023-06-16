@@ -70,7 +70,7 @@ Task 3:
 8 4 2 4
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
  */
-Console.WriteLine("Task 3 Fill two-dimensional array:");
+Console.WriteLine("Task 3 Average of columns:");
 void FillIntTwoDimensionArray(int[,] array, int numbersOfRows, int numbersOfColumns)
 {
     Random rand = new Random();
@@ -93,3 +93,20 @@ void ShowIntArray(int[,] array, int numbersOfRows, int numbersOfColumns)
         Console.WriteLine();
     }
 }
+void AverageOfNumbersOfArray (int[,] array, int numbersOfRows, int numbersOfColumns)
+{
+   double average = 0;
+    for (int i = 0; i < numbersOfColumns; i++)
+    {
+        average = 0;
+        for (int j = 0; j < numbersOfRows; j++)
+        {
+            average += array[j, i];
+        }
+        Console.WriteLine($"Average of {i} column = {Math.Round((average /= numbersOfRows), 2)}"); 
+    }
+}
+int[,] array2 = new int[rows, columns];
+FillIntTwoDimensionArray(array2, rows, columns);
+ShowIntArray(array2, rows, columns);
+AverageOfNumbersOfArray(array2, rows, columns);
