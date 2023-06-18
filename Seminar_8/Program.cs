@@ -114,8 +114,63 @@ void FindMinRow(int[,] matrix)
     }
     Console.WriteLine($"Min sum of number found in row {indexMin}");
 }
-
 int[,] matrix2 = new int[3, 4];
-FillIntMatrix(matrix2);
-ShowIntArray(matrix2);
-FindMinRow(matrix2);
+//FillIntMatrix(matrix2);
+//ShowIntArray(matrix2);
+//FindMinRow(matrix2);
+
+/*
+Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
+Например, даны 2 матрицы:
+2 4 | 3 4
+3 2 | 3 3
+Результирующая матрица будет:
+18 20
+15 18
+*/
+Console.WriteLine("Task 4 Multiplication of matrix: ");
+int[,] GetResultMultiplication(int[,] matrix1, int[,] matrix2)
+{
+    int[,] resultMatrix = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
+     for (int i = 0; i < matrix2.GetLength(1); i++)
+        {
+            for (int j = 0; j < matrix1.GetLength(0); j++)
+            {
+                for (int k = 0; k < matrix1.GetLength(1); k++)
+                {
+                    resultMatrix[j, i] += matrix1[j, k] * matrix2 [k,i];
+                }
+            }
+        }
+     return resultMatrix;
+}
+void FillIntMatrixByUser(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            Console.Write($"Enter element of matrix with index [{i},{j}] : ");
+            matrix[i, j] = Convert.ToInt32(Console.ReadLine());
+        }
+    }
+}
+Console.WriteLine("Enter number of rows of first matrix: ");
+int rowsFirstMatrix = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Enter number of columns of first matrix and rows of second matrix: ");
+int columnsFirstMatrix = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Enter number of columns of second matrix: ");
+int columnsSecondMatrix = Convert.ToInt32(Console.ReadLine());
+int[,] matrix3 = new int[rowsFirstMatrix, columnsFirstMatrix];
+int[,] matrix4 = new int[columnsFirstMatrix, columnsSecondMatrix];
+//FillIntMatrixByUser(matrix3);
+//FillIntMatrixByUser(matrix4);
+FillIntMatrix(matrix3);
+FillIntMatrix(matrix4);
+int[,] resultMatrix = GetResultMultiplication(matrix3, matrix4);
+Console.WriteLine("Matrix3: ");
+ShowIntArray(matrix3);
+Console.WriteLine("Matrix4: ");
+ShowIntArray(matrix4);
+Console.WriteLine("Result of multiplication: ");
+ShowIntArray(resultMatrix);
