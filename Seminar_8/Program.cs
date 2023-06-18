@@ -43,8 +43,8 @@ void ShowSumDiagonal (int[,] matrix)
     Console.WriteLine($"Sum of diagonal = {result}");
 }
 int[,] matrix1 = new int[5, 5];
-FillIntMatrix(matrix1);
-ShowIntArray(matrix1);
+//FillIntMatrix(matrix1);
+//ShowIntArray(matrix1);
 // ShowSumDiagonal(matrix1);
 
 /*
@@ -79,7 +79,43 @@ void SortRows(int[,] matrix)
         }
     }
 }
-matrix1[3, 1] = 10;
-SortRows(matrix1);
-Console.WriteLine("After sort: ");
-ShowIntArray(matrix1);
+//SortRows(matrix1);
+//ShowIntArray(matrix1);
+/* 
+Task 3:
+Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+
+Например, задан массив:
+1 4 7 2
+5 9 2 3
+8 4 2 4
+5 2 6 7
+Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка
+ */
+
+Console.WriteLine("Task 3 Min of rows: ");
+void FindMinRow(int[,] matrix)
+{
+    int min = 0, indexMin = 0;
+    bool flag = true; // Я упорно не хотел делать массив с суммами чисел строк, поэтому придумал такой флаг, чтобы произошло первое присвоение min = sum
+    for  (int i = 0;i < matrix.GetLength(0);i++)
+    {
+        int sum = 0; 
+        for (int  j = 0; j < matrix.GetLength(1); j++)
+        {
+            sum += matrix[i, j];
+        }
+        if (min > sum || flag)
+        {
+            min = sum;
+            indexMin = i;
+            flag = false;
+        }
+    }
+    Console.WriteLine($"Min sum of number found in row {indexMin}");
+}
+
+int[,] matrix2 = new int[3, 4];
+FillIntMatrix(matrix2);
+ShowIntArray(matrix2);
+FindMinRow(matrix2);
