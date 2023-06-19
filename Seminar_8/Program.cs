@@ -155,6 +155,7 @@ void FillIntMatrixByUser(int[,] matrix)
         }
     }
 }
+/*
 Console.WriteLine("Enter number of rows of first matrix: ");
 int rowsFirstMatrix = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Enter number of columns of first matrix and rows of second matrix: ");
@@ -163,10 +164,10 @@ Console.WriteLine("Enter number of columns of second matrix: ");
 int columnsSecondMatrix = Convert.ToInt32(Console.ReadLine());
 int[,] matrix3 = new int[rowsFirstMatrix, columnsFirstMatrix];
 int[,] matrix4 = new int[columnsFirstMatrix, columnsSecondMatrix];
-//FillIntMatrixByUser(matrix3);
-//FillIntMatrixByUser(matrix4);
-FillIntMatrix(matrix3);
-FillIntMatrix(matrix4);
+Console.WriteLine("Fill the first matrix: ");
+FillIntMatrixByUser(matrix3); 
+Console.WriteLine("Fill the second matrix: ");
+FillIntMatrixByUser(matrix4);
 int[,] resultMatrix = GetResultMultiplication(matrix3, matrix4);
 Console.WriteLine("Matrix3: ");
 ShowIntArray(matrix3);
@@ -174,3 +175,68 @@ Console.WriteLine("Matrix4: ");
 ShowIntArray(matrix4);
 Console.WriteLine("Result of multiplication: ");
 ShowIntArray(resultMatrix);
+*/
+
+/*
+Task 5:
+Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+Массив размером 2 x 2 x 2
+66(0,0,0) 25(0,1,0)
+34(1,0,0) 41(1,1,0)
+27(0,0,1) 90(0,1,1)
+26(1,0,1) 55(1,1,1)
+*/
+
+Console.WriteLine("Task 5 Unique 3D array: ");
+bool CheckUnique(int[,,] Array3D, int lastRow, int lastColumn, int lastDeep)
+{
+    for (int i = 0;i <= lastRow; i++) 
+    {
+        for ( int j = 0;j <= lastColumn; j++)
+        {
+            for (int k = 0; k < lastDeep ; k++)
+            {
+                if (Array3D[lastRow, lastColumn, lastDeep] == Array3D[i, j, k]) return true;
+            }
+        }
+    }
+    return false;
+}
+void FillInt3DArray(int[,,] Array3D)
+{
+    Random rand = new Random();
+    bool duplicate = true;
+    for (int i = 0; i < Array3D.GetLength(0); i++)
+    {
+        for (int j = 0; j < Array3D.GetLength(1); j++)
+        {
+            for (int k = 0; k < Array3D.GetLength(2); k++)
+            {
+                duplicate = true;
+                do
+                {
+                    Array3D[i, j, k] = rand.Next(10, 100);
+                    duplicate = CheckUnique(Array3D, i, j, k);
+                } while (duplicate);
+            }
+        }
+    }
+}
+void ShowInt3DArray(int[,,] Array3D)
+{
+    for (int i = 0; i < Array3D.GetLength(0); i++)
+    {
+        for (int j = 0; j < Array3D.GetLength(1); j++)
+        {
+            for (int k = 0; k < Array3D.GetLength(2); k++)
+            {
+                Console.Write($"{Array3D[i, j, k]}({i}, {j}, {k}) | ");
+            }
+            Console.WriteLine();
+        }
+        Console.WriteLine();
+    }
+}
+int[,,] Array3D = new int [4,4,4];
+FillInt3DArray (Array3D);
+ShowInt3DArray(Array3D);
