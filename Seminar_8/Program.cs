@@ -43,11 +43,13 @@ void ShowSumDiagonal(int[,] matrix)
     Console.WriteLine($"Sum of diagonal = {result}");
 }
 int[,] matrix1 = new int[5, 5];
-//FillIntMatrix(matrix1);
-//ShowIntArray(matrix1);
-// ShowSumDiagonal(matrix1);
+FillIntMatrix(matrix1);
+ShowIntArray(matrix1);
+ShowSumDiagonal(matrix1);
+Console.WriteLine();
 
 /*
+Task 2:
  Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 Например, задан массив:
 1 4 7 2
@@ -65,7 +67,7 @@ void SortRows(int[,] matrix)
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         int temp = 0;
-        for (int k = 1; k < matrix.GetLength(1) - 1; k++)
+        for (int k = 1; k < matrix.GetLength(1); k++)
         {
             for (int j = 0; j < matrix.GetLength(1) - k; j++)
             {
@@ -79,8 +81,9 @@ void SortRows(int[,] matrix)
         }
     }
 }
-//SortRows(matrix1);
-//ShowIntArray(matrix1);
+SortRows(matrix1);
+ShowIntArray(matrix1);
+Console.WriteLine();
 /* 
 Task 3:
 Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
@@ -115,9 +118,10 @@ void FindMinRow(int[,] matrix)
     Console.WriteLine($"Min sum of number found in row {indexMin}");
 }
 int[,] matrix2 = new int[3, 4];
-//FillIntMatrix(matrix2);
-//ShowIntArray(matrix2);
-//FindMinRow(matrix2);
+FillIntMatrix(matrix2);
+ShowIntArray(matrix2);
+FindMinRow(matrix2);
+Console.WriteLine();
 
 /*
 Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
@@ -155,7 +159,7 @@ void FillIntMatrixByUser(int[,] matrix)
         }
     }
 }
-/*
+
 Console.WriteLine("Enter number of rows of first matrix: ");
 int rowsFirstMatrix = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Enter number of columns of first matrix and rows of second matrix: ");
@@ -169,13 +173,13 @@ FillIntMatrixByUser(matrix3);
 Console.WriteLine("Fill the second matrix: ");
 FillIntMatrixByUser(matrix4);
 int[,] resultMatrix = GetResultMultiplication(matrix3, matrix4);
-Console.WriteLine("Matrix3: ");
+Console.WriteLine("First matrix: ");
 ShowIntArray(matrix3);
-Console.WriteLine("Matrix4: ");
+Console.WriteLine("Second matrix: ");
 ShowIntArray(matrix4);
 Console.WriteLine("Result of multiplication: ");
 ShowIntArray(resultMatrix);
-*/
+Console.WriteLine();
 
 /*
 Task 5:
@@ -188,15 +192,16 @@ Task 5:
 */
 
 Console.WriteLine("Task 5 Unique 3D array: ");
-bool CheckUnique(int[,,] Array3D, int lastRow, int lastColumn, int lastDeep)
+bool CheckUnique(int[,,] Array3D, int lastRow, int lastColumn, int lastDepth)
 {
-    for (int i = 0; i <= lastRow; i++)
+    for (int i = 0; i < Array3D.GetLength(0); i++)
     {
-        for (int j = 0; j <= lastColumn; j++)
+        for (int j = 0; j < Array3D.GetLength(1); j++)
         {
-            for (int k = 0; k < lastDeep; k++)
+            for (int k = 0; k < Array3D.GetLength(2); k++)
             {
-                if (Array3D[lastRow, lastColumn, lastDeep] == Array3D[i, j, k]) return true;
+                if (lastRow == i && lastColumn == j && lastDepth == k) { }
+                else if (Array3D[lastRow, lastColumn, lastDepth] == Array3D[i, j, k]) return true;
             }
         }
     }
@@ -215,7 +220,7 @@ void FillInt3DArray(int[,,] Array3D)
                 duplicate = true;
                 do
                 {
-                    Array3D[i, j, k] = rand.Next(10, 100);
+                    Array3D[i, j, k] = rand.Next(10, 101);
                     duplicate = CheckUnique(Array3D, i, j, k);
                 } while (duplicate);
             }
@@ -237,9 +242,10 @@ void ShowInt3DArray(int[,,] Array3D)
         Console.WriteLine();
     }
 }
-int[,,] Array3D = new int[4, 4, 4];
-//FillInt3DArray (Array3D);
-//ShowInt3DArray(Array3D);
+int[,,] Array3D = new int[3, 3, 3];
+FillInt3DArray (Array3D);
+ShowInt3DArray(Array3D);
+Console.WriteLine();
 /*
 Task 6
 ДОПОЛНИТЕЛЬНАЯ. Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
@@ -250,8 +256,8 @@ Task 6
 10 09 08 07
  */
 Console.WriteLine("Task 6 Spiral filling: ");
-// Мне стыдно за этот код, но я сам ничего другого придумать не смог. Гугл решил не использовать, а придумывать все самостоятельно.
-// Далее все будет в комментариях, чтобы было понятнее
+// Код довольно специфический, но работает для всех случаев. Независимо от размера и формы матрицы все будет заполнено.
+// Далее оставил комментарии, чтобы было понятнее
 bool IsEven(int x)
 {
     if (x % 2 == 0) return true;
@@ -265,20 +271,20 @@ void FillSpiralIntMatrix(int[,] matrix) // метод заполняет мат�
     // i - итератор по строкам, j - итератор по столбцам - мне требовалась их видимость для всей функции, поэтому я объявил их вне цикла for
     // numberOfRepeat - количество кругов, которые нужно заполнить в матрице
     // количество кругов определяется if else, в соответствии со следующей логикой: 
-    // если число строк четное, то число строк делить на 2
+    // если число строк четное, то число строк делится на 2
     // если число строк нечетное, то добавляется дополнительный круг
-    // при этом если количество строк больше количества столбцов т.е. матрица представляет собой вертикальный прямоугольник,
+    // при этом, если количество строк больше количества столбцов т.е. матрица представляет собой вертикальный прямоугольник,
     // то даже при нечетном количестве строк дополнительный круг будет лишним
     if (flagIsEven || matrix.GetLength(0) > matrix.GetLength(1)) numberOfRepeat = matrix.GetLength(0) / 2; 
     else numberOfRepeat = matrix.GetLength(0) / 2 + 1;
-    for (int k = 0; k < numberOfRepeat; k++) // k - итератор количество повторений, а также позволяющий отсечь круги, которые уже были пройдены
+    for (int k = 0; k < numberOfRepeat; k++) // k - итератор, который реализует количество повторений, а также позволяет отсечь круги, которые уже были пройдены
     {
-        i = k;
+        i = k; // отсечение пройденных кругов
         j = k;
         for (; j != matrix.GetLength(1) - k - 1; j++, counter++) // проходим верхнюю строку
         {
-            // далее представлен костыль, который позволяет применять алгоритм к матрицам, у которых разрыв между количеством строк и столбцов больше 1
-            // без него последняя строка в таких массивах перезаписывала саму себя
+            // далее представлен костыль, который позволяет применять алгоритм к матрицам с разрывом между количеством строк и столбцов больше 1
+            // без него последняя строка в таких массивах перезаписывает саму себя
             if (counter == matrix.GetLength(0) * matrix.GetLength(1) + 1) break; 
             matrix[i, j] = counter;
         }
