@@ -22,7 +22,7 @@ void FillIntMatrix(int[,] matrix)
         }
     }
 }
-void ShowIntArray (int[,] matrix)
+void ShowIntArray(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
@@ -33,7 +33,7 @@ void ShowIntArray (int[,] matrix)
         Console.WriteLine();
     }
 }
-void ShowSumDiagonal (int[,] matrix)
+void ShowSumDiagonal(int[,] matrix)
 {
     int result = 0;
     for (int i = 0, j = 0; i < matrix.GetLength(0) && j < matrix.GetLength(1); i++, j++)
@@ -61,8 +61,8 @@ int[,] matrix1 = new int[5, 5];
 Console.WriteLine("Task 2 Sort of rows: ");
 void SortRows(int[,] matrix)
 {
- 
-    for (int i = 0; i < matrix.GetLength(0);i++)
+
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
         int temp = 0;
         for (int k = 1; k < matrix.GetLength(1) - 1; k++)
@@ -98,10 +98,10 @@ void FindMinRow(int[,] matrix)
 {
     int min = 0, indexMin = 0;
     bool flag = true; // Я упорно не хотел делать массив с суммами чисел строк, поэтому придумал такой флаг, чтобы произошло первое присвоение min = sum
-    for  (int i = 0;i < matrix.GetLength(0);i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        int sum = 0; 
-        for (int  j = 0; j < matrix.GetLength(1); j++)
+        int sum = 0;
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
             sum += matrix[i, j];
         }
@@ -132,17 +132,17 @@ Console.WriteLine("Task 4 Multiplication of matrix: ");
 int[,] GetResultMultiplication(int[,] matrix1, int[,] matrix2)
 {
     int[,] resultMatrix = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
-     for (int i = 0; i < matrix2.GetLength(1); i++)
+    for (int i = 0; i < matrix2.GetLength(1); i++)
+    {
+        for (int j = 0; j < matrix1.GetLength(0); j++)
         {
-            for (int j = 0; j < matrix1.GetLength(0); j++)
+            for (int k = 0; k < matrix1.GetLength(1); k++)
             {
-                for (int k = 0; k < matrix1.GetLength(1); k++)
-                {
-                    resultMatrix[j, i] += matrix1[j, k] * matrix2 [k,i];
-                }
+                resultMatrix[j, i] += matrix1[j, k] * matrix2[k, i];
             }
         }
-     return resultMatrix;
+    }
+    return resultMatrix;
 }
 void FillIntMatrixByUser(int[,] matrix)
 {
@@ -190,11 +190,11 @@ Task 5:
 Console.WriteLine("Task 5 Unique 3D array: ");
 bool CheckUnique(int[,,] Array3D, int lastRow, int lastColumn, int lastDeep)
 {
-    for (int i = 0;i <= lastRow; i++) 
+    for (int i = 0; i <= lastRow; i++)
     {
-        for ( int j = 0;j <= lastColumn; j++)
+        for (int j = 0; j <= lastColumn; j++)
         {
-            for (int k = 0; k < lastDeep ; k++)
+            for (int k = 0; k < lastDeep; k++)
             {
                 if (Array3D[lastRow, lastColumn, lastDeep] == Array3D[i, j, k]) return true;
             }
@@ -237,6 +237,76 @@ void ShowInt3DArray(int[,,] Array3D)
         Console.WriteLine();
     }
 }
-int[,,] Array3D = new int [4,4,4];
-FillInt3DArray (Array3D);
-ShowInt3DArray(Array3D);
+int[,,] Array3D = new int[4, 4, 4];
+//FillInt3DArray (Array3D);
+//ShowInt3DArray(Array3D);
+/*
+Task 6
+ДОПОЛНИТЕЛЬНАЯ. Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+Например, на выходе получается вот такой массив:
+01 02 03 04
+12 13 14 05
+11 16 15 06
+10 09 08 07
+ */
+Console.WriteLine("Task 6 Spiral filling: ");
+// Мне стыдно за этот код, но я сам ничего другого придумать не смог. Гугл решил не использовать, а придумывать все самостоятельно.
+// Далее все будет в комментариях, чтобы было понятнее
+bool IsEven(int x)
+{
+    if (x % 2 == 0) return true;
+    return false;
+}
+void FillSpiralIntMatrix(int[,] matrix) // метод заполняет матрицу кругами, начиная с внешнего и заканчивая внутренним. 
+{
+    int counter = 1, i = 0, j = 0, numberOfRepeat = 0;
+    bool flagIsEven = IsEven(matrix.GetLength(0));
+    // counter - само число, которое присваивается элементам матрицы, а также используется для проверки окончания всего процесса заполнения
+    // i - итератор по строкам, j - итератор по столбцам - мне требовалась их видимость для всей функции, поэтому я объявил их вне цикла for
+    // numberOfRepeat - количество кругов, которые нужно заполнить в матрице
+    // количество кругов определяется if else, в соответствии со следующей логикой: 
+    // если число строк четное, то число строк делить на 2
+    // если число строк нечетное, то добавляется дополнительный круг
+    // при этом если количество строк больше количества столбцов т.е. матрица представляет собой вертикальный прямоугольник,
+    // то даже при нечетном количестве строк дополнительный круг будет лишним
+    if (flagIsEven || matrix.GetLength(0) > matrix.GetLength(1)) numberOfRepeat = matrix.GetLength(0) / 2; 
+    else numberOfRepeat = matrix.GetLength(0) / 2 + 1;
+    for (int k = 0; k < numberOfRepeat; k++) // k - итератор количество повторений, а также позволяющий отсечь круги, которые уже были пройдены
+    {
+        i = k;
+        j = k;
+        for (; j != matrix.GetLength(1) - k - 1; j++, counter++) // проходим верхнюю строку
+        {
+            // далее представлен костыль, который позволяет применять алгоритм к матрицам, у которых разрыв между количеством строк и столбцов больше 1
+            // без него последняя строка в таких массивах перезаписывала саму себя
+            if (counter == matrix.GetLength(0) * matrix.GetLength(1) + 1) break; 
+            matrix[i, j] = counter;
+        }
+        for (; i != matrix.GetLength(0) - k - 1; i++, counter++) // проходим правый столбец
+        {
+            if (counter == matrix.GetLength(0) * matrix.GetLength(1) + 1) break;
+            matrix[i, j] = counter;
+        }
+        for (; j != k; j--, counter++) // проходим нижнюю строку
+        {
+            if (counter == matrix.GetLength(0) * matrix.GetLength(1) + 1) break;
+            matrix[i, j] = counter;
+        }
+        for (; i != k; i--, counter++) // проходим левый столбец
+        {
+            if (counter == matrix.GetLength(0) * matrix.GetLength(1) + 1) break;
+            matrix[i, j] = counter;
+        }
+        if (counter == matrix.GetLength(0) * matrix.GetLength(1) + 1) break;
+        if (!flagIsEven && k == numberOfRepeat - 1 ) // вставляет число в центральный элемент матрицы, у которой нечетное количество строк
+        {
+            matrix[i, j] = counter;
+        }
+        if (counter == matrix.GetLength(0) * matrix.GetLength(1) + 1) break;
+    }
+}
+int[,] matrix5 = new int[10,6];
+FillSpiralIntMatrix(matrix5);
+ShowIntArray(matrix5);
+
+
