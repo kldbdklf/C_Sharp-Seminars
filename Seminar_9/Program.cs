@@ -14,12 +14,12 @@ string GetNumbersString (int N)
     if (N == 1) return N.ToString();
     return N + ", " + GetNumbersString(N - 1);
 }
-/*
+
 Console.Write("Enter N: ");
 int inputN1 = int.Parse(Console.ReadLine());
 Console.WriteLine(GetNumbersString(inputN1));
 Console.WriteLine();
-*/
+
 /*
  Task 2:
 Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
@@ -44,14 +44,14 @@ int GetSumRange (int start, int end)
     if (start == end) return end;
     return start + GetSumRange(start + 1, end);
 }
-/*
+
 Console.Write("Enter M: ");
 int inputM1 = int.Parse(Console.ReadLine());
 Console.Write("Enter N: ");
 int inputN2 = int.Parse(Console.ReadLine());
 ShowSumRange(inputM1, inputN2);
 Console.WriteLine();
-*/
+
 /*
  Task 3:
 Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
