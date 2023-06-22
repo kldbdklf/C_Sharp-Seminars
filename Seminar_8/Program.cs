@@ -43,9 +43,9 @@ void ShowSumDiagonal(int[,] matrix)
     Console.WriteLine($"Sum of diagonal = {result}");
 }
 int[,] matrix1 = new int[5, 5];
-FillIntMatrix(matrix1);
-ShowIntArray(matrix1);
-ShowSumDiagonal(matrix1);
+//FillIntMatrix(matrix1);
+//ShowIntArray(matrix1);
+//ShowSumDiagonal(matrix1);
 Console.WriteLine();
 
 /*
@@ -81,8 +81,8 @@ void SortRows(int[,] matrix)
         }
     }
 }
-SortRows(matrix1);
-ShowIntArray(matrix1);
+//SortRows(matrix1);
+//ShowIntArray(matrix1);
 Console.WriteLine();
 /* 
 Task 3:
@@ -118,9 +118,9 @@ void FindMinRow(int[,] matrix)
     Console.WriteLine($"Min sum of number found in row {indexMin}");
 }
 int[,] matrix2 = new int[3, 4];
-FillIntMatrix(matrix2);
-ShowIntArray(matrix2);
-FindMinRow(matrix2);
+//FillIntMatrix(matrix2);
+//ShowIntArray(matrix2);
+//FindMinRow(matrix2);
 Console.WriteLine();
 
 /*
@@ -159,7 +159,7 @@ void FillIntMatrixByUser(int[,] matrix)
         }
     }
 }
-
+/*
 Console.WriteLine("Enter number of rows of first matrix: ");
 int rowsFirstMatrix = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Enter number of columns of first matrix and rows of second matrix: ");
@@ -180,7 +180,7 @@ ShowIntArray(matrix4);
 Console.WriteLine("Result of multiplication: ");
 ShowIntArray(resultMatrix);
 Console.WriteLine();
-
+*/
 /*
 Task 5:
 Задача 60. ...Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
@@ -190,7 +190,7 @@ Task 5:
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)
 */
-
+/*
 Console.WriteLine("Task 5 Unique 3D array: ");
 bool CheckUnique(int[,,] Array3D, int lastRow, int lastColumn, int lastDepth)
 {
@@ -246,6 +246,7 @@ int[,,] Array3D = new int[3, 3, 3];
 FillInt3DArray (Array3D);
 ShowInt3DArray(Array3D);
 Console.WriteLine();
+*/
 /*
 Task 6
 ДОПОЛНИТЕЛЬНАЯ. Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
@@ -256,6 +257,7 @@ Task 6
 10 09 08 07
  */
 Console.WriteLine("Task 6 Spiral filling: ");
+/*
 // Код довольно специфический, но работает для всех случаев. Независимо от размера и формы матрицы все будет заполнено.
 // Далее оставил комментарии, чтобы было понятнее
 bool IsEven(int x)
@@ -314,5 +316,31 @@ void FillSpiralIntMatrix(int[,] matrix) // метод заполняет мат�
 int[,] matrix5 = new int[10,6];
 FillSpiralIntMatrix(matrix5);
 ShowIntArray(matrix5);
+*/
+const int n = 6;
+const int m = 8;
+int[,] matrix = new int[n, m];
 
+int row = 0;
+int col = 0;
+int dx = 1;
+int dy = 0;
+int dirChanges = 0;
+int visits = m;
 
+for (int i = 0; i < matrix.Length; i++)
+{
+    matrix[row, col] = i + 1;
+    if (--visits == 0)
+    {
+        visits = m * (dirChanges % 2) + n * ((dirChanges + 1) % 2) - (dirChanges / 2 - 1) - 2;
+        int temp = dx;
+        dx = -dy;
+        dy = temp;
+        dirChanges++;
+    }
+
+    col += dx;
+    row += dy;
+}
+ShowIntArray(matrix);
