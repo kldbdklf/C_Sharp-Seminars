@@ -7,13 +7,12 @@ N = 8 -> "8, 7, 6, 5, 4, 3, 2, 1"
 using System.Reflection.Metadata.Ecma335;
 
 Console.WriteLine("Task 1 Natural numbers in the range from N to 1:");
-int ShowNaturalNumbers (int N)
+string ShowNaturalNumbers (int N)
 {
-    if (N == 1) return 1;
-    Console.WriteLine();
-    return
-    return
+    string result = String.Empty;
+    if (N == 1) return N.ToString();
+    return N + ", " + ShowNaturalNumbers(N - 1);
 }
-
 Console.Write("Enter N: ");
 int N = int.Parse(Console.ReadLine());
+Console.WriteLine(ShowNaturalNumbers(N));
