@@ -44,8 +44,47 @@ int GetSumRange (int start, int end)
     if (start == end) return end;
     return start + GetSumRange(start + 1, end);
 }
+/*
 Console.Write("Enter M: ");
 int inputM1 = int.Parse(Console.ReadLine());
 Console.Write("Enter N: ");
 int inputN2 = int.Parse(Console.ReadLine());
 ShowSumRange(inputM1, inputN2);
+Console.WriteLine();
+*/
+/*
+ Task 3:
+Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. Даны два неотрицательных числа m и n.
+m = 2, n = 3 -> A(m,n) = 9
+m = 3, n = 2 -> A(m,n) = 29
+ */
+Console.WriteLine("Task 3 Function Accerman:");
+bool CheckNonNegative(int Number)
+{
+    return Number >= 0 && Number < 4? false : true; 
+}
+int EnterNumber ()
+{
+    int inputNumber = 0;
+    do
+    {
+        Console.Write("Enter non-negative number less than 4: ");
+        inputNumber = int.Parse(Console.ReadLine());
+    } while (CheckNonNegative(inputNumber));
+    return inputNumber;
+}
+int CalculateFunctionAccerman(int n, int m)
+{
+    if (n == 0) return m + 1;
+    else if (m == 0) return CalculateFunctionAccerman(n - 1, 1);
+    else return CalculateFunctionAccerman(n - 1, CalculateFunctionAccerman(n, m - 1));
+}
+Console.WriteLine("First number: ");
+int inputN3 = EnterNumber();
+Console.WriteLine("Second number: ");
+int inputM2 = EnterNumber();
+Console.WriteLine($"Result of Function Accerman: {CalculateFunctionAccerman(inputN3, inputM2)} ");
+
+
+
+
